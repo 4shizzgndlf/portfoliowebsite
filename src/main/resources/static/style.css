@@ -1,0 +1,91 @@
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100vh;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    transition: width 0.3s ease;
+    overflow: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+/* Expand on hover */
+.sidebar:hover {
+    width: 220px;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.12);
+}
+
+/* ===== MENU ITEMS ===== */
+.item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin: 0 8px;
+    transition: all 0.25s ease;
+}
+
+/* Icons */
+.icon {
+    display: flex;
+    font-size: 20px;
+    min-width: 24px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Labels (hidden initially) */
+.label {
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+/* Show labels on hover */
+.sidebar:hover .label {
+    opacity: 1;
+}
+
+/* ===== INTERACTIONS ===== */ /* Hover (green glow) */
+.item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+/* Active (purple highlight) */
+.item.active {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 220px;
+}
+
+.home {
+    margin-left: 70px;   /* same as collapsed sidebar width */
+    padding: 40px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .home {
+    margin-left: 220px;  /* same as expanded sidebar width */
+}
