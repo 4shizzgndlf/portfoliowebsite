@@ -3,57 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" th:href="@{style.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <script th:src="@{js/script.js}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Sekuya&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <div class="item active">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Baseline-home SVG
-                Icon</title>
-                <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"/>
-            </svg>
-        </div>
-        <div class="label">Home</div>
-    </div>
-    <div class="item">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Baseline-dashboard
-                SVG Icon</title>
-                <path fill="currentColor" d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"/>
-            </svg>
-        </div>
-        <div class="label">Dashboard</div>
-    </div>
-    <div class="item">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Messages SVG
-                Icon</title>
-                <g fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M2 5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-3.586l-3.707 3.707A1 1 0 0 1 6 17v-3H5a3 3 0 0 1-3-3V5zm20 4v6c0 1-.6 3-3 3h-1v3c0 .333-.2 1-1 1c-.203 0-.368-.043-.5-.113L12.613 18H9l3-3h3c1.333 0 4-.8 4-4V6c1 0 3 .6 3 3z"
-                          fill="currentColor"/>
-                </g>
-            </svg>
-        </div>
-        <div class="label">Messages</div>
-    </div>
-    <div class="item">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Baseline-settings
-                SVG Icon</title>
-                <path fill="currentColor"
-                      d="M19.14 12.94c.04-.3.06-.61.06-.94c0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6s3.6 1.62 3.6 3.6s-1.62 3.6-3.6 3.6"/>
-            </svg>
-        </div>
-        <div class="label">Settings</div>
-    </div>
-</div>
+<div th:replace="fragments/sidebar :: sidebar"></div>
 <!-- MAIN CONTENT -->
 <div class="home">
-    <div>// Hello world</div>
-    <div>Hi there! <br> I'm Lucas Hoffmann <br> <span>Christensen</span></div>
+    <div class="homeContainer">
+        <div class="leftHomeContainer">
+            <div id="helloWorld">// Hello world</div>
+            <div id="hiThere">Hi there! <br> I'm <strong>Lucas <span id="hoffmann">Hoffmann</span> <br>
+                Christensen</strong></div>
+            <br>
+            <div class="clockAndSoMe">
+                <div class="clock-container">
+                    <div id="clock"></div>
+                </div>
+                <div class="soMe-container">
+                    <a href="https://www.linkedin.com/in/lucas-hoffmann-christensen-856bb9372/">
+                        <svg id="linkedInSvg" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                             viewBox="0 0 32 32"><title>
+                            Linkedin-in SVG Icon</title>
+                            <path fill="currentColor"
+                                  d="M8.268 28H2.463V9.306h5.805zM5.362 6.756C3.506 6.756 2 5.218 2 3.362a3.362 3.362 0 0 1 6.724 0c0 1.856-1.506 3.394-3.362 3.394M29.994 28h-5.792v-9.1c0-2.169-.044-4.95-3.018-4.95c-3.018 0-3.481 2.356-3.481 4.794V28h-5.799V9.306h5.567v2.55h.081c.775-1.469 2.668-3.019 5.492-3.019c5.875 0 6.955 3.869 6.955 8.894V28z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/4shizzgndlf">
+                        <svg id="githubSvg" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                             viewBox="0 0 24 24"><title>
+                            Bxl-github SVG Icon</title>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974c0 4.406 2.857 8.145 6.821 9.465c.499.09.679-.217.679-.481c0-.237-.008-.865-.011-1.696c-2.775.602-3.361-1.338-3.361-1.338c-.452-1.152-1.107-1.459-1.107-1.459c-.905-.619.069-.605.069-.605c1.002.07 1.527 1.028 1.527 1.028c.89 1.524 2.336 1.084 2.902.829c.091-.645.351-1.085.635-1.334c-2.214-.251-4.542-1.107-4.542-4.93c0-1.087.389-1.979 1.024-2.675c-.101-.253-.446-1.268.099-2.64c0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336a9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021c.545 1.372.203 2.387.099 2.64c.64.696 1.024 1.587 1.024 2.675c0 3.833-2.33 4.675-4.552 4.922c.355.308.675.916.675 1.846c0 1.334-.012 2.41-.012 2.737c0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974C22 6.465 17.535 2 12.026 2z"
+                                  fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/luc.h.c/">
+                        <svg id="instagramSvg" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                             viewBox="0 0 16 16"><title>
+                            Instagram SVG Icon</title>
+                            <path fill="currentColor"
+                                  d="M8 0C5.829 0 5.556.01 4.703.048C3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7C.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297c.04.852.174 1.433.372 1.942c.205.526.478.972.923 1.417c.444.445.89.719 1.416.923c.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417c.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046c.78.035 1.204.166 1.486.275c.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485c.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598c-.28.11-.704.24-1.485.276c-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598a2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485c-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486c.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276c.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92a.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217a4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334a2.667 2.667 0 0 1 0-5.334"/>
+                        </svg>
+                    </a>
+                    <a href="https://steamcommunity.com/id/luC137/">
+                        <svg id="steamSvg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><title>
+                            Logo-steam SVG Icon</title>
+                            <path fill="currentColor"
+                                  d="M478.8 208.2a36 36 0 1 1-36-36a36 36 0 0 1 36 36M442.6 139a69.42 69.42 0 0 0-69.4 68.7l-43.2 62a49 49 0 0 0-5.4-.3a51.27 51.27 0 0 0-26.4 7.3L102.4 198a51.8 51.8 0 1 0-50.6 62.9a51.27 51.27 0 0 0 26.4-7.3L274 332.2a51.76 51.76 0 0 0 102.1-5.9l66.5-48.6a69.35 69.35 0 1 0 0-138.7m0 22.9a46.45 46.45 0 1 1-46.5 46.5a46.54 46.54 0 0 1 46.5-46.5m-390.8 9a38.18 38.18 0 0 1 33.7 20.2l-18.9-7.6v.1a30.21 30.21 0 0 0-22.6 56v.1l16.1 6.4a36.8 36.8 0 0 1-8.2.9a38.05 38.05 0 0 1-.1-76.1m272.8 112.2a38.1 38.1 0 1 1-33.7 55.9c6.3 2.5 12.5 5 18.8 7.6a30.27 30.27 0 1 0 22.5-56.2l-15.9-6.4a47 47 0 0 1 8.3-.9"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="rightHomeContainer">
+            <img id="portraitImage" th:src="@{images/IMG_0098.jpeg}" alt="portrait">
+            <br>
+            <div class="imageContainer">
+                <img class="selectorImage" th:src="@{images/IMG_0098.jpeg}" alt="">
+                <img class="selectorImage" th:src="@{images/IMG_2135.jpeg}" alt="">
+                <img class="selectorImage" th:src="@{images/IMG_2203.jpeg}" alt="">
+                <img class="selectorImage" th:src="@{images/IMG_2238.jpeg}" alt="">
+                <img class="selectorImage" th:src="@{images/IMG_2261.jpeg}" alt="">
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
