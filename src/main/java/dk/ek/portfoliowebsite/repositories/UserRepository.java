@@ -26,7 +26,6 @@ public class UserRepository {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                Integer i = 0;
                 User u = new User(
                         rs.getInt("id"),
                         rs.getString("username"),
@@ -36,8 +35,7 @@ public class UserRepository {
                         rs.getString("lastName"),
                         rs.getString("created_at")
                 );
-                users.put(i + 1, u);
-                i++;
+                users.put(u.getId(), u);
             }
 
         } catch (SQLException e) {
@@ -45,5 +43,52 @@ public class UserRepository {
         }
 
         return users;
+    }
+
+    public User findByEmail(String email) {
+        String sql = "SELECT * FROM users WHERE email = ?";
+
+        try (Connection conn = DriverManager.getConnection(dbUrl, username, password);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("created_at")
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public void save(User user) {
+        String sql = "INSERT INTO users (username, email, password, firstName, lastName) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(dbUrl, username, password);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getFirstName());
+            stmt.setString(5, user.getLastName());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

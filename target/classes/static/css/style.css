@@ -208,7 +208,7 @@ body {
     align-items: center;
     gap: 100px;
     min-height: 100vh;
-    margin: 40px;
+    margin: 0 40px;
 }
 
 #helloWorld {

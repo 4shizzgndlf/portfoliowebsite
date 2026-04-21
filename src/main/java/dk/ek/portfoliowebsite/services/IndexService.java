@@ -17,4 +17,18 @@ public class IndexService {
     public Map<Integer, User> getAllUsers(){
         return repo.findAll();
     }
+
+    public User login(String email, String password) {
+        User user = repo.findByEmail(email);
+
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
+        }
+
+        return null;
+    }
+
+    public void register(User user) {
+        repo.save(user);
+    }
 }

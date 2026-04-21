@@ -25,8 +25,6 @@
         <td th:text="${user.password}"></td>
         <td th:text="${user.firstName}"></td>
         <td th:text="${user.lastName}"></td>
-        <td th:text="${user.address}"></td>
-        <td th:text="${user.zipCode}"></td>
 
         <!-- DELETE BUTTON (only visible to admin) -->
         <td th:if="${session.user != null and session.user.email == 'admin@admin.com'}">

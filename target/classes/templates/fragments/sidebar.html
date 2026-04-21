@@ -46,7 +46,16 @@
         </div>
     </div>
     <div class="bottomSidebar">
-        <div class="item">
+        <div th:if="${session.user != null and session.user.email == 'admin@admin.com'}" class="item">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>
+                    Baseline-dashboard SVG Icon</title>
+                    <path fill="currentColor" d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"/>
+                </svg>
+            </div>
+            <div class="label">Dashboard</div>
+        </div>
+        <div class="item" onclick="window.location.href='/register'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>
                     Accessibility-new-rounded SVG Icon</title>
@@ -56,7 +65,7 @@
             </div>
             <div class="label">Sign up</div>
         </div>
-        <div id="itemLogInBtn" class="itemBtn">
+        <div id="itemLogInBtn" class="itemBtn" onclick="window.location.href='/login'">
             <div class="iconLogin">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Bxs-log-in SVG
                     Icon</title>
