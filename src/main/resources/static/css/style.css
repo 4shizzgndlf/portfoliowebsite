@@ -1,4 +1,8 @@
 /* ===== GLOBAL ===== */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: system-ui, sans-serif;
@@ -14,10 +18,9 @@ body {
             #0f3460 75%,
             #1b1b2f 100%
     ); */
-    background-image:
-            radial-gradient(circle at 20% 30%, rgba(255, 0, 150, 0.25), transparent 40%),
-            radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.25), transparent 40%),
-            radial-gradient(circle at 50% 80%, rgba(0, 255, 150, 0.2), transparent 40%);
+    background-image: radial-gradient(circle at 20% 30%, rgba(255, 0, 150, 0.25), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(0, 255, 150, 0.2), transparent 40%);
     color: white;
     background-color: black;
     background-repeat: no-repeat;
@@ -108,6 +111,10 @@ body {
     background-color: #ff009640;
 }
 
+#itemLogOutBtn {
+    background-color: #ff009640;
+}
+
 #itemSettingsBtn {
     background-color: white;
     color: black;
@@ -188,13 +195,13 @@ body {
 }
 
 .home {
-    margin-left: 70px;   /* same as collapsed sidebar width */
+    margin-left: 70px; /* same as collapsed sidebar width */
     padding: 40px;
     transition: margin-left 0.3s ease;
 }
 
 .sidebar:hover ~ .home {
-    margin-left: 220px;  /* same as expanded sidebar width */
+    margin-left: 220px; /* same as expanded sidebar width */
 }
 
 .home {
@@ -249,10 +256,9 @@ body {
     letter-spacing: 3px;
 
     /* glow effect */
-    text-shadow:
-            0 0 10px rgba(0, 234, 255, 0.7),
-            0 0 20px rgba(0, 234, 255, 0.5),
-            0 0 40px rgba(0, 234, 255, 0.3);
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.7),
+    0 0 20px rgba(0, 234, 255, 0.5),
+    0 0 40px rgba(0, 234, 255, 0.3);
 }
 
 .soMe-container {
@@ -322,3 +328,166 @@ body {
     opacity: 1;
 }
 
+/* ===== ABOUT SECTION ===== */
+.aboutSection {
+    margin: 0 40px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.aboutCard {
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 25px;
+    /* glass effect (same vibe as clock) */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    color: white;
+    margin: 0 auto;
+    height: auto;
+}
+
+.aboutCard h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.aboutCard p {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* ===== SKILLS SECTION ===== */
+.skillsSection {
+    margin: 0 40px;
+    text-align: center;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.skillsTitle {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* CARD */
+.skillCard {
+    padding: 25px;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* ICON IMAGE */
+.skillCard svg {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.skillCard img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* TEXT */
+.skillCard span {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* 🔥 HOVER EFFECT */
+.skillCard:hover {
+    transform: translateY(-8px) scale(1.05);
+
+    background: rgba(255, 255, 255, 0.15);
+
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2),
+    0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+/* glow effect on hover */
+.skillCard:hover span {
+    color: #fff;
+}
+
+/* OPTIONAL: subtle icon glow */
+.skillCard:hover img {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+/* ===== SCROLL ANIMATION BASE ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+/* visible state */
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* optional: stagger children */
+.stagger > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.stagger.show > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* delay each card */
+.stagger.show > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger.show > *:nth-child(2) { transition-delay: 0.15s; }
+.stagger.show > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger.show > *:nth-child(4) { transition-delay: 0.25s; }
+.stagger.show > *:nth-child(5) { transition-delay: 0.3s; }
+.stagger.show > *:nth-child(6) { transition-delay: 0.35s; }
+.stagger.show > *:nth-child(7) { transition-delay: 0.4s; }
+.stagger.show > *:nth-child(8) { transition-delay: 0.45s; }
+.stagger.show > *:nth-child(9) { transition-delay: 0.5s; }
+.stagger.show > *:nth-child(10) { transition-delay: 0.55s; }
+.stagger.show > *:nth-child(11) { transition-delay: 0.6s; }
+.stagger.show > *:nth-child(12) { transition-delay: 0.65s; }
+.stagger.show > *:nth-child(13) { transition-delay: 0.7s; }
+.stagger.show > *:nth-child(14) { transition-delay: 0.75s; }
+.stagger.show > *:nth-child(15) { transition-delay: 0.8s; }
+.stagger.show > *:nth-child(16) { transition-delay: 0.85s; }
+.stagger.show > *:nth-child(17) { transition-delay: 0.9s; }
+.stagger.show > *:nth-child(18) { transition-delay: 0.95s; }
+.stagger.show > *:nth-child(19) { transition-delay: 1s; }
+.stagger.show > *:nth-child(20) { transition-delay: 1.05s; }
+.stagger.show > *:nth-child(21) { transition-delay: 1.10s; }

@@ -23,3 +23,19 @@ document.querySelectorAll(".selectorImage").forEach(img => {
         document.getElementById("portraitImage").src = this.src;
     });
 });
+
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+// observe fade-in elements
+document.querySelectorAll(".fade-in, .stagger").forEach(el => {
+    observer.observe(el);
+});

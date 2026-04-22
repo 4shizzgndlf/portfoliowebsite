@@ -1,7 +1,7 @@
 <!-- SIDEBAR -->
 <div class="sidebar" th:fragment="sidebar">
     <div class="topSidebar">
-        <div class="item active">
+        <div class="item active" onclick="document.querySelector('.homeContainer').scrollIntoView()">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Baseline-home
                     SVG
@@ -11,7 +11,7 @@
             </div>
             <div class="label">Home</div>
         </div>
-        <div class="item">
+        <div class="item" onclick="document.querySelector('.aboutSection').scrollIntoView()">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><title>
                     About-filled SVG Icon</title>
@@ -21,7 +21,7 @@
             </div>
             <div class="label">About</div>
         </div>
-        <div class="item">
+        <div class="item" onclick="document.querySelector('.skillsSection').scrollIntoView()">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Certificate
                     SVG Icon</title>
@@ -46,6 +46,16 @@
         </div>
     </div>
     <div class="bottomSidebar">
+        <div th:if="${session.user != null}" class="item">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Account SVG
+                    Icon</title>
+                    <path fill="currentColor"
+                          d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/>
+                </svg>
+            </div>
+            <div class="label">Profile</div>
+        </div>
         <div th:if="${session.user != null and session.user.email == 'admin@admin.com'}" class="item">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>
@@ -55,7 +65,7 @@
             </div>
             <div class="label">Dashboard</div>
         </div>
-        <div class="item" onclick="window.location.href='/register'">
+        <div th:if="${session.user == null}" class="item" onclick="window.location.href='/register'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>
                     Accessibility-new-rounded SVG Icon</title>
@@ -65,8 +75,12 @@
             </div>
             <div class="label">Sign up</div>
         </div>
-        <div id="itemLogInBtn" class="itemBtn" onclick="window.location.href='/login'">
+        <!-- Show when user is NOT logged in -->
+        <div id="itemLogInBtn" class="itemBtn"
+             th:if="${session.user == null}"
+             onclick="window.location.href='/login'">
             <div class="iconLogin">
+                <!-- svg -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Bxs-log-in SVG
                     Icon</title>
                     <path d="M18.5 2h-13a.5.5 0 0 0-.5.5V11h6V8l5 4l-5 4v-3H5v8.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-19a.5.5 0 0 0-.5-.5z"
@@ -74,6 +88,21 @@
                 </svg>
             </div>
             <div class="label">Log in</div>
+        </div>
+
+        <!-- Show when user IS logged in -->
+        <div id="itemLogOutBtn" class="itemBtn"
+             th:if="${session.user != null}"
+             onclick="window.location.href='/logout'">
+            <div class="iconLogin">
+                <!-- you can reuse or change icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Bxs-log-out
+                    SVG Icon</title>
+                    <path d="M18 2H6a1 1 0 0 0-1 1v9l5-4v3h6v2h-6v3l-5-4v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"
+                          fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="label">Log out</div>
         </div>
         <div class="sidebar-divider"></div>
         <div id="itemSettingsBtn" class="itemBtn">
