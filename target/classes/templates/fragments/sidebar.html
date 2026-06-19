@@ -1,7 +1,7 @@
 <!-- SIDEBAR -->
 <div class="sidebar" th:fragment="sidebar">
     <div class="topSidebar">
-        <div class="item active" onclick="document.querySelector('.homeContainer').scrollIntoView()">
+        <div id="navHome" class="item active"  onclick="window.location.href='/'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Baseline-home
                     SVG
@@ -11,7 +11,7 @@
             </div>
             <div class="label">Home</div>
         </div>
-        <div class="item" onclick="document.querySelector('.aboutSection').scrollIntoView()">
+        <div id="navAbout" class="item"  onclick="window.location.href='/#about'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><title>
                     About-filled SVG Icon</title>
@@ -21,7 +21,7 @@
             </div>
             <div class="label">About</div>
         </div>
-        <div class="item" onclick="document.querySelector('.skillsSection').scrollIntoView()">
+        <div id="navSkills" class="item" onclick="window.location.href='/#skills'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Certificate
                     SVG Icon</title>
@@ -31,7 +31,7 @@
             </div>
             <div class="label">Skills</div>
         </div>
-        <div class="item" onclick="document.querySelector('.contactSection').scrollIntoView()">
+        <div id="navContact" class="item" onclick="window.location.href='/#contact'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Messages SVG
                     Icon</title>
@@ -65,7 +65,7 @@
             </div>
             <div class="label">Dashboard</div>
         </div>
-        <div th:if="${session.user == null}" class="item" onclick="window.location.href='/register'">
+        <div id="navRegister" th:if="${session.user == null}" class="item" onclick="window.location.href='/register'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>
                     Accessibility-new-rounded SVG Icon</title>

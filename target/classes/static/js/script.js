@@ -1,12 +1,15 @@
 function updateClock() {
+    const clock = document.getElementById("clock");
+
+    if (!clock) return;
+
     const now = new Date();
 
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
 
-    document.getElementById("clock").textContent =
-        `${hours}:${minutes}:${seconds}`;
+    clock.textContent = `${hours}:${minutes}:${seconds}`;
 }
 
 setInterval(updateClock, 1000);
@@ -39,3 +42,52 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll(".fade-in, .stagger").forEach(el => {
     observer.observe(el);
 });
+
+if (window.location.pathname === "/") {
+
+    window.addEventListener("scroll", () => {
+        const home = document.querySelector(".homeContainer");
+        const about = document.querySelector(".aboutSection");
+        const skills = document.querySelector(".skillsSection");
+        const contact = document.querySelector(".contactSection");
+
+        const navHome = document.querySelector("#navHome");
+        const navAbout = document.querySelector("#navAbout");
+        const navSkills = document.querySelector("#navSkills");
+        const navContact = document.querySelector("#navContact");
+
+        [navHome, navAbout, navSkills, navContact].forEach(item =>
+            item?.classList.remove("active")
+        );
+
+        const scrollPos = window.scrollY + window.innerHeight / 2;
+
+        if (scrollPos >= contact.offsetTop) {
+            navContact?.classList.add("active");
+        } else if (scrollPos >= skills.offsetTop) {
+            navSkills?.classList.add("active");
+        } else if (scrollPos >= about.offsetTop) {
+            navAbout?.classList.add("active");
+        } else {
+            navHome?.classList.add("active");
+        }
+    });
+
+}
+const currentPath = window.location.pathname;
+
+if (currentPath === "/register") {
+    document.querySelector("#navRegister")?.classList.add("active");
+    document.querySelector("#navHome")?.classList.remove("active");
+}
+
+if (currentPath === "/login") {
+    document.querySelector("#itemLogInBtn")?.classList.add("active");
+    document.querySelector("#navHome").classList.remove("active");
+}
+
+console.log(window.location.pathname);
+
+
+
+

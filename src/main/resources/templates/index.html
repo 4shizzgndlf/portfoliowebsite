@@ -14,7 +14,7 @@
 <div th:replace="fragments/sidebar :: sidebar"></div>
 <!-- MAIN CONTENT -->
 <div class="home">
-    <div class="homeContainer fade-in">
+    <section id="home" class="homeContainer fade-in">
         <div class="leftHomeContainer">
             <div id="helloWorld">// Hello world</div>
             <div id="hiThere">Hi there! <br>
@@ -75,8 +75,8 @@
                 <img class="selectorImage" th:src="@{images/IMG_2261.jpeg}" alt="">
             </div>
         </div>
-    </div>
-    <div class="aboutSection fade-in">
+    </section>
+    <section id="about" class="aboutSection fade-in">
         <div class="aboutCard">
             <h2>About</h2>
             <p>
@@ -106,8 +106,8 @@
                 will see a list of <strong>technologies I'm experienced with and use daily.</strong>
             </p>
         </div>
-    </div>
-    <div class="skillsSection fade-in">
+    </section>
+    <section id="skills" class="skillsSection fade-in">
         <h2 class="skillsTitle">Skills</h2>
 
         <div class="skillsGrid stagger">
@@ -458,8 +458,8 @@
                 <span>VS Code</span>
             </div>
         </div>
-    </div>
-    <section class="contactSection fade-in">
+    </section>
+    <section id="contact" class="contactSection fade-in">
         <h2 class="contactTitle">Contact Me</h2>
 
         <form class="contactForm">
