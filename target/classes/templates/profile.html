@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/script.js}" defer></script>
+</head>
+
+<body>
+
+<div th:replace="fragments/sidebar :: sidebar"></div>
+
+<div class="homeContainer">
+
+    <div class="profileCard">
+
+        <h1>My Profile</h1>
+
+        <form method="post" action="/profile" class="profileForm">
+
+            <div class="profileRow">
+                <label>ID</label>
+                <input type="number"
+                       name="id"
+                       th:value="${user.id}"
+                       readonly>
+            </div>
+
+            <div class="profileRow">
+                <label>Username</label>
+                <input type="text"
+                       name="username"
+                       th:value="${user.username}">
+            </div>
+
+            <div class="profileRow">
+                <label>Email</label>
+                <input type="email"
+                       name="email"
+                       th:value="${user.email}">
+            </div>
+
+            <div class="profileRow">
+                <label>Password</label>
+                <input type="text"
+                       name="password"
+                       th:value="${user.password}">
+            </div>
+
+            <div class="profileRow">
+                <label>First Name</label>
+                <input type="text"
+                       name="firstName"
+                       th:value="${user.firstName}">
+            </div>
+
+            <div class="profileRow">
+                <label>Last Name</label>
+                <input type="text"
+                       name="lastName"
+                       th:value="${user.lastName}">
+            </div>
+
+            <div class="profileRow">
+                <label>Created At</label>
+                <input type="text"
+                       th:value="${user.created_at}"
+                       readonly>
+            </div>
+
+            <button class="saveProfileBtn" type="submit">
+                Save Changes
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

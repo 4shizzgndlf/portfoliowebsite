@@ -7,10 +7,18 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-public class IndexService {
+public class DahsboardService {
     private final UserRepository repo;
 
-    public IndexService(UserRepository repo) {
+    public DahsboardService(UserRepository repo) {
         this.repo = repo;
+    }
+
+    public Map<Integer, User> getAllUsers(){
+        return repo.findAll();
+    }
+
+    public void deleteUser(int id){
+        repo.delete(id);
     }
 }

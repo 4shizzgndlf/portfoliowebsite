@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="bottomSidebar">
-        <div th:if="${session.user != null}" class="item">
+        <a th:href="@{/profile}" th:if="${session.user != null}" class="item">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Account SVG
                     Icon</title>
@@ -55,8 +55,8 @@
                 </svg>
             </div>
             <div class="label">Profile</div>
-        </div>
-        <div th:if="${session.user != null and session.user.email == 'admin@admin.com'}" class="item">
+        </a>
+        <a th:href="@{/dashboard}" th:if="${session.user != null and session.user.email == 'admin@admin.com'}" class="item">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>
                     Baseline-dashboard SVG Icon</title>
@@ -64,7 +64,7 @@
                 </svg>
             </div>
             <div class="label">Dashboard</div>
-        </div>
+        </a>
         <div id="navRegister" th:if="${session.user == null}" class="item" onclick="window.location.href='/register'">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>

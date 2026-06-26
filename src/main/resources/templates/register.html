@@ -2,26 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <script th:src="@{js/script.js}" defer></script>
+    <title>Create Account</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/script.js}" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Sekuya&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 </head>
+
 <body>
+
 <div th:replace="fragments/sidebar :: sidebar"></div>
+
 <div class="homeContainer">
-    <form method="post" action="/register">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="text" name="firstName" placeholder="First Name" required>
-        <input type="text" name="lastName" placeholder="Last Name" required>
-        <button type="submit">Register</button>
-    </form>
+
+    <div class="registerCard fade-in">
+
+        <h1>Create Account</h1>
+
+        <p class="registerSubtitle">
+            Join my portfolio website and create your own profile.
+        </p>
+
+        <form method="post" action="/register" class="registerForm">
+
+            <div class="inputGroup">
+                <label>Username</label>
+                <input
+                        type="text"
+                        name="username"
+                        placeholder="Choose a username"
+                        required>
+            </div>
+
+            <div class="inputGroup">
+                <label>Email</label>
+                <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+            </div>
+
+            <div class="inputGroup">
+                <label>First Name</label>
+                <input
+                        type="text"
+                        name="firstName"
+                        placeholder="First name"
+                        required>
+            </div>
+
+            <div class="inputGroup">
+                <label>Last Name</label>
+                <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Last name"
+                        required>
+            </div>
+
+            <div class="inputGroup fullWidth">
+                <label>Password</label>
+                <input
+                        type="password"
+                        name="password"
+                        placeholder="Create a password"
+                        required>
+            </div>
+
+            <button class="registerBtn fullWidth" type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <div class="registerFooter">
+            Already have an account?
+            <a href="/login">Log In</a>
+        </div>
+
+    </div>
+
 </div>
-</form>
+
 </body>
 </html>

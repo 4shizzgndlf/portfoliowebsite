@@ -7,10 +7,19 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-public class IndexService {
+public class ProfileService {
+
     private final UserRepository repo;
 
-    public IndexService(UserRepository repo) {
+    public ProfileService(UserRepository repo) {
         this.repo = repo;
+    }
+
+    public User getUserByEmail(String email) {
+        return repo.findByEmail(email);
+    }
+
+    public void updateUser(User user) {
+        repo.update(user);
     }
 }

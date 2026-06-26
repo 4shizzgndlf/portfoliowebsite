@@ -1,7 +1,7 @@
 package dk.ek.portfoliowebsite.controllers;
 
 import dk.ek.portfoliowebsite.models.User;
-import dk.ek.portfoliowebsite.services.IndexService;
+import dk.ek.portfoliowebsite.services.AuthService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class AuthController {
 
-    private final IndexService service;
+    private final AuthService service;
 
-    public AuthController(IndexService service) {
+    public AuthController(AuthService service) {
         this.service = service;
     }
 

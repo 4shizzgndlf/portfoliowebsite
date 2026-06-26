@@ -91,4 +91,52 @@ public class UserRepository {
             e.printStackTrace();
         }
     }
+
+    public void update(User user) {
+        String sql = """
+        UPDATE users
+        SET username = ?,
+            email = ?,
+            password = ?,
+            firstName = ?,
+            lastName = ?
+        WHERE id = ?
+        """;
+
+        try (
+                Connection conn = DriverManager.getConnection(dbUrl, username, password);
+                PreparedStatement stmt = conn.prepareStatement(sql)
+        ) {
+
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getFirstName());
+            stmt.setString(5, user.getLastName());
+            stmt.setInt(6, user.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int id){
+
+        String sql = "DELETE FROM users WHERE id = ?";
+
+        try(
+                Connection conn = DriverManager.getConnection(dbUrl, username, password);
+                PreparedStatement stmt = conn.prepareStatement(sql)
+        ){
+
+            stmt.setInt(1,id);
+
+            stmt.executeUpdate();
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
