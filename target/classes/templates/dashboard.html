@@ -13,82 +13,85 @@
 <body>
 <div th:replace="fragments/sidebar :: sidebar"></div>
 
-<div class="homeContainer">
+<div class="home">
+    <div class="homeContainer">
 
-    <div class="dashboardCard">
+        <div class="dashboardCard">
 
-        <div class="dashboardHeader">
+            <div class="dashboardHeader">
 
-            <h1>User Management</h1>
+                <h1>User Management</h1>
 
-            <div class="userCounter">
-                <span th:text="${userCount}"></span>
-                <p>Registered Users</p>
-            </div>
-
-        </div>
-
-        <div class="userCard"
-             th:each="user : ${users}">
-
-            <div class="userHeader">
-
-                <div>
-
-                    <h2 th:text="${user.firstName + ' ' + user.lastName}"></h2>
-
-                    <p>ID:
-                        <span th:text="${user.id}"></span>
-                    </p>
-
+                <div class="userCounter">
+                    <span th:text="${userCount}"></span>
+                    <p>Registered Users</p>
                 </div>
-
-                <a class="deleteBtn"
-                   th:href="@{/deleteUser(id=${user.id})}">
-                    Delete
-                </a>
 
             </div>
 
-            <div class="userInfo">
+            <div class="userCard"
+                 th:each="user : ${users}">
 
-                <div>
+                <div class="userHeader">
 
-                    <label>Username</label>
+                    <div>
 
-                    <p th:text="${user.username}"></p>
+                        <h2 th:text="${user.firstName + ' ' + user.lastName}"></h2>
 
-                </div>
+                        <p>ID:
+                            <span th:text="${user.id}"></span>
+                        </p>
 
-                <div>
+                    </div>
 
-                    <label>Email</label>
-
-                    <p th:text="${user.email}"></p>
-
-                </div>
-
-                <div>
-
-                    <label>First Name</label>
-
-                    <p th:text="${user.firstName}"></p>
+                    <a class="deleteBtn"
+                       th:href="@{/deleteUser(id=${user.id})}">
+                        Delete
+                    </a>
 
                 </div>
 
-                <div>
+                <div class="userInfo">
 
-                    <label>Last Name</label>
+                    <div>
 
-                    <p th:text="${user.lastName}"></p>
+                        <label>Username</label>
 
-                </div>
+                        <p th:text="${user.username}"></p>
 
-                <div>
+                    </div>
 
-                    <label>Created</label>
+                    <div>
 
-                    <p th:text="${user.created_at}"></p>
+                        <label>Email</label>
+
+                        <p th:text="${user.email}"></p>
+
+                    </div>
+
+                    <div>
+
+                        <label>First Name</label>
+
+                        <p th:text="${user.firstName}"></p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Last Name</label>
+
+                        <p th:text="${user.lastName}"></p>
+
+                    </div>
+
+                    <div>
+
+                        <label>Created</label>
+
+                        <p th:text="${user.created_at}"></p>
+
+                    </div>
 
                 </div>
 
@@ -97,7 +100,6 @@
         </div>
 
     </div>
-
 </div>
 </body>
 </html>

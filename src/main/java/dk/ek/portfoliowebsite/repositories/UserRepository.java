@@ -139,4 +139,41 @@ public class UserRepository {
             e.printStackTrace();
         }
     }
+
+    public User findById(int id) {
+
+        String sql = "SELECT * FROM users WHERE id = ?";
+
+        try (
+                Connection conn = DriverManager.getConnection(dbUrl, username, password);
+                PreparedStatement stmt = conn.prepareStatement(sql)
+        ) {
+
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("created_at")
+                );
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+
 }

@@ -86,6 +86,16 @@ if (currentPath === "/login") {
     document.querySelector("#navHome").classList.remove("active");
 }
 
+if (currentPath === "/profile") {
+    document.querySelector("#navProfile")?.classList.add("active");
+    document.querySelector("#navHome").classList.remove("active");
+}
+
+if (currentPath === "/dashboard") {
+    document.querySelector("#navDashboard")?.classList.add("active");
+    document.querySelector("#navHome").classList.remove("active");
+}
+
 console.log(window.location.pathname);
 
 

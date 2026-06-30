@@ -521,9 +521,31 @@ body {
     align-items: center;
 }
 
-.contactTitle {
+.contactHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 36px;
     margin-bottom: 40px;
+}
+
+.contactHeader h2{
+    margin: 0;
+    line-height: 1.1;
+}
+
+.contactSubtitle{
+    margin-top: 0;
+    color: white;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.contactSubtitle:hover{
+    opacity: 0.75;
 }
 
 /* FORM CARD */
@@ -1181,4 +1203,352 @@ body {
     text-decoration:underline;
 
 }
+
+.messagesCard{
+
+    flex:1;
+
+    width:auto;
+
+    height:85vh;
+
+    margin:35px auto;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(14px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+.messagesHeader{
+
+    padding:30px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.messagesHeader h1{
+
+    margin-bottom:5px;
+
+}
+
+.messagesHeader p{
+
+    opacity:.6;
+
+}
+
+.chatContainer{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:30px;
+
+}
+
+.messageRow{
+
+    display:flex;
+
+    margin-bottom:25px;
+
+    align-items:flex-end;
+
+}
+
+.messageRow.left{
+
+    justify-content:flex-start;
+
+}
+
+.messageRow.right{
+
+    justify-content:flex-end;
+
+}
+
+.chatAvatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    margin-right:15px;
+
+    object-fit:cover;
+
+}
+.message{
+
+    max-width:500px;
+
+    padding:16px 20px;
+
+    border-radius:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.received{
+
+    background:white;
+
+    color:#111;
+
+    border-bottom-left-radius:8px;
+
+}
+
+.sent{
+
+    background:linear-gradient(
+            135deg,
+            #5B5EFF,
+            #4A6CFF
+    );
+
+    color:white;
+
+    border-bottom-right-radius:8px;
+
+}
+
+.message p{
+
+    margin:0;
+
+    line-height:1.6;
+
+}
+
+.message span{
+
+    margin-top:10px;
+
+    font-size:12px;
+
+    opacity:.6;
+
+    align-self:flex-end;
+
+}
+
+.chatInput{
+
+    display:flex;
+
+    padding:25px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    gap:15px;
+
+}
+
+.chatInput input{
+
+    flex:1;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.05);
+
+    color:white;
+
+    padding:0 20px;
+
+    font-size:16px;
+
+}
+
+.chatInput input:focus{
+
+    outline:none;
+
+}
+
+.chatInput button{
+
+    width:150px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    background:linear-gradient(
+            135deg,
+            #5B5EFF,
+            #6D4CFF
+    );
+
+    transition:.2s;
+
+}
+
+.chatInput button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.messagesLayout{
+
+    width: 100%;
+
+    margin:35px auto;
+
+    display:flex;
+
+    gap:30px;
+
+    align-items:stretch;
+
+}
+
+.conversationList{
+
+    width:340px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+}
+
+.conversationList h2{
+
+    margin:0;
+
+    padding:30px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.conversation{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+    padding:20px 25px;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.2s;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.conversation:hover{
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.conversation.active{
+
+    background:rgba(109,93,252,.18);
+
+}
+.conversationAvatar{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+            135deg,
+            #5B5EFF,
+            #6D4CFF
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+    font-size:18px;
+
+}
+
+.conversationInfo{
+
+    flex:1;
+
+}
+
+.conversationInfo h3{
+
+    margin:0;
+
+    font-size:17px;
+
+}
+
+.conversationInfo p{
+
+    margin-top:6px;
+
+    opacity:.65;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/script.js}" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div th:replace="fragments/sidebar :: sidebar"></div>
+
+<div class="home">
+    <div class="homeContainer">
+
+        <div class="messagesLayout">
+
+            <!-- LEFT SIDEBAR -->
+            <div class="conversationList" th:if="${isAdmin}">
+
+                <a th:each="u : ${users}"
+                   th:href="@{/messages(user=${u.id})}"
+                   class="conversation">
+
+                    <div class="conversationAvatar"
+                         th:text="${u.firstName.substring(0,1)}"></div>
+
+                    <div class="conversationInfo">
+                        <h3 th:text="${u.firstName}"></h3>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <!-- EXISTING CHAT -->
+            <div class="messagesCard">
+
+                <div class="messagesHeader">
+
+                    <div>
+                        <h1>Messages</h1>
+                        <p>Your conversation with Lucas</p>
+                    </div>
+
+                </div>
+
+                <div class="chatContainer">
+
+                    <div th:each="message : ${messages}">
+
+                        <div th:class="${message.senderId == session.user.id}
+                    ? 'messageRow right'
+                    : 'messageRow left'">
+
+                            <div th:class="${message.senderId == session.user.id}
+                        ? 'message sent'
+                        : 'message received'">
+
+                                <p th:text="${message.content}"></p>
+
+                                <span th:text="${message.createdAt}"></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <form action="/messages/send" method="post" class="chatInput">
+
+                    <input type="hidden"
+                           name="receiverId"
+                           th:value="${selectedUser.id}">
+
+                    <input type="text"
+                           name="content"
+                           placeholder="Type your message...">
+
+                    <button>Send</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
